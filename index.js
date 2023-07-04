@@ -1,4 +1,4 @@
-// Twitter API Mock JSON 
+// -------------------- Twitter API Mock JSON  -------------------- // 
 var user1 = {
     userName: '@elonmusk',
     displayName: 'Elon Musk',
@@ -78,7 +78,7 @@ var user2 = {
 
 
 
-// Real code starts here
+// -------------------- Real code starts here -------------------- //
 // Read current website URl search parameters
 var queryParams = new URLSearchParams(window.location.search);
 
@@ -93,6 +93,7 @@ var index;
 
 
 
+// -------------------- Initial Data Processing -------------------- //
 // Set up follower count conversion function here
 function formatNumber(number) {
     // Check to see if user is Elon or Bill
@@ -104,18 +105,20 @@ function formatNumber(number) {
     // Convert the number to a string
     var numberString = number.toString();
   
-    // Extract the first three/four digits
-    var firstThreeDigits = numberString.substring(0, 3);
-    var firstFourDigits = numberString.substring(0, 4);
-
-    // Insert a decimal point after the second/third digit
-    var formattedBigNumber = firstFourDigits.substring(0, 3) + "." + firstFourDigits.substring(3);
-    var formattedSmallNumber = firstThreeDigits.substring(0, 2) + "." + firstThreeDigits.substring(2);
-  
     // Return 144.9 if Elon or 62.7 if Bill
     if (user === "elon") {
+        // Extract the first four digits
+        var firstFourDigits = numberString.substring(0, 4);
+        // Insert a decimal point after the third digit
+        var formattedBigNumber = firstFourDigits.substring(0, 3) + "." + firstFourDigits.substring(3);
+
         return formattedBigNumber;
     } else if (user === "bill") {
+        // Extract the first three digits
+        var firstThreeDigits = numberString.substring(0, 3);
+        // Insert a decimal point after the second digit
+        var formattedSmallNumber = firstThreeDigits.substring(0, 2) + "." + firstThreeDigits.substring(2);
+
         return formattedSmallNumber;
     }
 }
@@ -123,7 +126,6 @@ function formatNumber(number) {
 // Follower count conversion usage here
 var formattedNumber = formatNumber(users[index].followerCount);
  
-
 
 // Convert timestamps to month and day here
 function formatTimestamp(timestamp) {
@@ -140,6 +142,7 @@ function formatTimestamp(timestamp) {
 
 
 
+// -------------------- Rendor JSON to HTML -------------------- //
 // Set up back button, and fixed header information tab
 var displayName = $(`
                   <div class="header-container">
@@ -162,11 +165,8 @@ var displayName = $(`
 
 // Set up cover photo
 var coverPhoto = $(`
-                 <div id="elon-cover" class="background">
-                        <img class="click-to-enlarge" src="elonmusk-cover.jpeg">
-                 </div>
-                 <div id="bill-cover" class="background">
-                        <img class="click-to-enlarge" src="billgates-cover.jpeg">
+                 <div class="background">
+                        <img class="click-to-enlarge" src="${users[index].coverPhotoURL}">
                  </div>
                  `)
                  .appendTo($("#cover")
@@ -232,7 +232,7 @@ var displayTweets = $(`
 
 
 
-// Different details between Elon and Bill
+// -------------------- Different details between Elon and Bill -------------------- //
 if (index === 0) {
     // Elon added the twitter symbol next to his name
     $(`
@@ -247,9 +247,6 @@ if (index === 0) {
     <h4 class="subscriptions">${users[index].subscriptions} <span class="extra">Subscriptions</span></h4>
     `)
     .appendTo($(".following"));
-    // Elon has a planets cover photo
-    $("#elon-cover").removeClass("hidden");
-    $("#bill-cover").addClass("hidden");
     // Remove Bill Gates bio line, location, and blog link
     $(".bio").addClass("hidden");
     $(`
@@ -283,9 +280,6 @@ if (index === 0) {
     <h4 class="subscriptions">${users[index].subscriptions} <span class="extra">Subscriptions</span></h4>
     `)
     .remove($(".following"));
-    // Bill has a community cover photo
-    $("#bill-cover").removeClass("hidden");
-    $("#elon-cover").addClass("hidden");
     // Add Bill Gates bio line, location, and blog link
     $(".bio").removeClass("hidden");
     $(`
@@ -312,6 +306,8 @@ if (index === 0) {
 }
                        
 
+
+// -------------------- Custom Functions & Logic Development -------------------- //
 // Set up click to enlarge image and then revert back to original size logic here
 document.addEventListener("DOMContentLoaded", function() {
     var images = document.querySelectorAll(".click-to-enlarge");
@@ -354,7 +350,6 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-
 // Set up follow/unfollow button here
 $(document).ready(function() {
     $(".follow-button").click(function() {
@@ -382,8 +377,7 @@ $(".follow-button").hover(
 );
 
 
-
-// Set up back button to switch between users logic here
+// Set up dynamic back button logic here
 $(document).ready(function() {
     $(".go-back").click(function() {
         // Get the current URL
@@ -403,7 +397,6 @@ $(document).ready(function() {
 });
 
   
-
 // Set up tab selector logic here
 $(document).ready(function() {
     $('.tab-btn').click(function() {
@@ -425,7 +418,8 @@ $(document).ready(function() {
 });
   
 
-  
+
+// -------------------- Tweet Processing -------------------- //
 // Filter timestamps and display tweets here
 for (var i = 0; i < users[index].tweets.length; i++) {
     var formattedTimestamps = [];
@@ -473,7 +467,7 @@ for (var i = 0; i < users[index].tweets.length; i++) {
     .appendTo('#tweets-tab');
 } 
 
-// Add twitter symbol next to Elon name for each tweet
+// Add twitter symbol next to Elon name for each tweet rendered above
 if (index === 0) {
     $(`
     <img class="mini-twitter-symbol" src="twitter-symbol.jpg">
@@ -481,10 +475,13 @@ if (index === 0) {
     .appendTo('.mini-image-container');
 }
 
+
 // Like/Unlike button logic here
 $(document).ready(function() {
+    // Initialize flag
     var isOldSVG = true;
 
+    // Replace old like button with new filled one 
     $('.like-icon').click(function() {
         if (isOldSVG) {
             var newSVG = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">' +
@@ -492,7 +489,8 @@ $(document).ready(function() {
             '</svg>';
 
             $(this).html(newSVG);
-        } else {
+        } else { 
+            // Replace new filled button with old empty one
             var oldSVG = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">' +
             '<path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>' +
             '</svg>';
@@ -500,9 +498,11 @@ $(document).ready(function() {
             $(this).html(oldSVG);
         }
 
+        // Toggle flag
         isOldSVG = !isOldSVG;
     });
 });
+
 
 // Copy web link to keyboard logic here
 $(document).ready(function() {

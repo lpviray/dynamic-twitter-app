@@ -23,7 +23,7 @@ body, html {
 
 
 
-/* ----- TWITTER HEADER ----- */
+/* -------------------- TWITTER HEADER -------------------- */
 #header {
     height: 55px;
     width: 600px;
@@ -39,7 +39,7 @@ body, html {
     z-index: 9999;
 }
 
-/* needed to make sure name and image container are side by side */
+/* needed to make sure user info container and image container are side by side */
 .header-container {
     display: flex;
 }
@@ -93,6 +93,7 @@ body, html {
     background-color: #1D1D1D;
 }
 
+/* make arrow and name white */
 .gg-arrow-left, .name {
     color: rgb(231, 233, 234);
 }
@@ -118,7 +119,7 @@ img:nth-of-type(2) {
 
 
 
-/* ----- TWITTER COVER PHOTO ----- */
+/* -------------------- TWITTER COVER PHOTO -------------------- */
 #cover {
     height: 200px;
     width: 100%;
@@ -129,11 +130,6 @@ img:nth-of-type(2) {
 
 .background > img {
     width: 600px;
-}
-
-/* hides the other image depending on the user selected */
-.hidden { 
-    display: none;
 }
 
 /* enlarge picture when clicked on */
@@ -156,13 +152,22 @@ img:nth-of-type(2) {
 }
 
 
-/* ----- TWITTER SUMMARY ----- */
+
+/* -------------------- TWITTER SUMMARY -------------------- */
 #details {
     width: 100%;
     height: 230px;
     position: absolute;
     margin-top: 270px; 
     z-index: 9997;
+}
+
+.userName, .home, .joined, .bi-geo-alt, .bi-link-45deg, .bi-calendar2-week, .extra {
+    color: rgb(113, 118, 123);
+} 
+
+.userName, .home, .joined, .notes, .followingCount, .followerCount, .subscriptions, .extra, .bio > h4 {
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /* profile picture */
@@ -237,11 +242,6 @@ img:nth-of-type(2) {
 .userName, .home, .joined, .notes {
     font-size: 0.9375rem; /* 15px */
     font-weight: 400;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.userName, .home, .joined {
-    color: rgb(113, 118, 123);
 }
 
 .userName {
@@ -262,7 +262,6 @@ img:nth-of-type(2) {
 }
 
 .bi-geo-alt, .bi-link-45deg, .bi-calendar2-week {
-    color: rgb(113, 118, 123);
     padding-left: 20px;
 }
 
@@ -301,7 +300,6 @@ img:nth-of-type(2) {
 .followingCount, .followerCount, .subscriptions {
     font-size: 0.875rem; /* 14px */
     font-weight: 700;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 .followerCount, .subscriptions {
@@ -309,10 +307,8 @@ img:nth-of-type(2) {
 }
 
 .extra {
-    color: rgb(113, 118, 123);
     font-size: 0.875rem; /* 14px */
     font-weight: 400;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 .bio {
@@ -320,21 +316,37 @@ img:nth-of-type(2) {
     padding-left: 20px;
 }
 
+.hidden {
+    display: none;
+}
+
 .bio > h4 {
     color: rgb(231, 233, 234);
     font-size: 0.9375rem; /* 15px */
     font-weight: 400;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 
 
-/* ----- TWEETS ----- */
+/* -------------------- TWEETS -------------------- */
 #tweets {
     width: 100%;
     border-bottom: 1px solid grey;
 }
 
+.tab-btn, .mini-userName, .bi-chat, .bi-repeat, .bi-heart, .bi-share {
+    color: rgb(113, 118, 123);
+}
+
+.tab-btn, .mini-userName, .tweet-text, .dummy {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.tab-btn, .small-image, .bi-chat, .bi-repeat, .bi-heart, .bi-heart-fill, .bi-share {
+    cursor: pointer;
+}
+
+/* tab selector styling */
 .tab-container {
     width: 100%;
     height: 50px;
@@ -347,10 +359,7 @@ img:nth-of-type(2) {
     background-color: black;
     font-size: 0.9375rem; /* 15px */
     font-weight: 500;
-    font-family: Arial, Helvetica, sans-serif;
-    color: rgb(113, 118, 123);
     border: black;
-    cursor: pointer;
     position: relative;
     display: inline-block;
 }
@@ -385,11 +394,13 @@ img:nth-of-type(2) {
     display: flex;
 }
 
+/* styling for tweets tab when active */
 #tweets-tab {
     display: flex;
     flex-direction: column;
 }
 
+/* contains mini profile picture, name, date, and tweets */
 .tweet-bar {
     display: flex;
     width: 100%;
@@ -402,7 +413,6 @@ img:nth-of-type(2) {
     border-radius: 50%;
     margin-top: 10px;
     margin-left: 20px;
-    cursor: pointer;
 }
 
 .mini-profile-info {
@@ -432,11 +442,9 @@ img:nth-of-type(2) {
 }
 
 .mini-userName {
-    color: rgb(113, 118, 123);
     padding-left: 4px;
     font-size: 0.9375rem; /* 15px */
     font-weight: 400;
-    font-family: Arial, Helvetica, sans-serif;
     padding-top: 10px;
 }
 
@@ -451,20 +459,20 @@ img:nth-of-type(2) {
     color: rgb(231, 233, 234);
     font-size: 0.9375rem; /* 15px */
     font-weight: 400;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 .mini-twitter-symbol {
     margin-right: 1.5px;
 }
 
+/* fills in extra tabs with lorem ipsum when active */
 .dummy {
     color: rgb(231, 233, 234);
     font-size: 1.5rem;
-    font-family: Arial, Helvetica, sans-serif;
     padding-top: 10px;
 }
 
+/* holds all the interactive icons */
 .react-bar {
     margin-left: 70px;
     padding: 5px 0 5px 0;
@@ -472,14 +480,6 @@ img:nth-of-type(2) {
     justify-content: space-between;
     align-items: center;
     width: 70%;
-}
-
-.bi-chat, .bi-repeat, .bi-heart, .bi-share {
-    color: rgb(113, 118, 123);
-}
-
-.bi-chat, .bi-repeat, .bi-heart, .bi-heart-fill, .bi-share {
-    cursor: pointer;
 }
 
 .reply-icon, .retweet-icon, .like-icon, .share-icon {
@@ -491,6 +491,7 @@ img:nth-of-type(2) {
     border-radius: 50%;
 }
 
+/* color formatting for icons */
 .reply-icon:hover, .share-icon:hover {
     background-color: rgba(29, 154, 231, 0.15); 
 }
