@@ -1,23 +1,25 @@
 # dynamic-twitter-app
- This is an interactice twitter clone that dynamically renders two different user profiles from Mock JSON by manipulating the search query of the web page. 
- Additional features include:
+This is an interactive twitter clone based on Twitter's 2023 dark mode UI design. The goal of the project was to demonstrate the ability to dynamically render two different user profiles from Mock JSON by manipulating the search query of the web page. Visitors of the website can add ?user=user1 to the end of the URL to load Elon Musk's user data to the web page. However, adding ?user=user2 to the end of the URL will load in Bill Gates's user data instead.<br/>
 
- • Scrollable layout
- • Dynamic tab selector 
- • Back button for switching between both user profiles
- • Responsive follow/unfollow button
- • Responsive like button
- • Responsive share button that includes a confirmation notification
- • Clickable pictures to enlarge
- • Clickable external web links to navigate to
+ The live webpage can be viewed at: [https://lpviray.github.io/dynamic-twitter-app/](https://lpviray.github.io/dynamic-twitter-app/)
+ 
+# Additional Features
+ • Scrollable layout<br/>
+ • Dynamic tab selector<br/> 
+ • Back button for switching between both user profiles<br/>
+ • Responsive follow/unfollow button<br/>
+ • Responsive like button<br/>
+ • Responsive share button that includes a confirmation notification<br/>
+ • Clickable pictures to enlarge<br/>
+ • Clickable external web links to navigate to<br/>
 
- Technologies used to create the project include:
- • HTML5
- • CSS
- • JavaScript
- • jQuery
- • Toastr
- • GitHub
+ # Technologies Used
+ • HTML5<br/>
+ • CSS<br/>
+ • JavaScript<br/>
+ • jQuery<br/>
+ • Toastr<br/>
+ • GitHub<br/>
 
 
 
