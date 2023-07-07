@@ -6,8 +6,8 @@ var user1 = {
     followingCount: 336,
     followerCount: 144900000,
     subscriptions: 88,
-    avatarURL: 'elonmusk.jpg',
-    coverPhotoURL: 'elonmusk-cover.jpeg',
+    avatarURL: 'assets/elonmusk.jpg',
+    coverPhotoURL: 'assets/elonmusk-cover.jpeg',
     tweets: [
         {
             text: 'Tesla > Rivian > Everyone Else >>> Lucid Motors :)',
@@ -50,8 +50,8 @@ var user2 = {
     joinedDate: 'June 2009',
     followingCount: 274,
     followerCount: 62700000,
-    avatarURL: 'billgates.jpg',
-    coverPhotoURL: 'billgates-cover.jpeg',
+    avatarURL: 'assets/billgates.jpg',
+    coverPhotoURL: 'assets/billgates-cover.jpeg',
     tweets: [
         {
             text: 'Everybody asks, how is the next Windows coming along? But nobody asks how is Bill? :/',
@@ -156,7 +156,7 @@ var displayName = $(`
                             </div>
                         </div>
                         <div class="image-container">
-                            <img src="twitter-verified.jpg">
+                            <img src="assets/twitter-verified.jpg">
                         </div>
                   </div>
                   `)
@@ -183,7 +183,7 @@ var displayInfo = $(`
                   <div class="profile-info">
                         <h1 class="displayName">${users[index].displayName}</h1>
                         <div class="image-container">
-                            <img src="twitter-verified.jpg">
+                            <img src="assets/twitter-verified.jpg">
                         </div>
                   </div>
                   <h4 class="userName">${users[index].userName}</h4>
@@ -236,7 +236,7 @@ var displayTweets = $(`
 if (index === 0) {
     // Elon added the twitter symbol next to his name
     $(`
-    <img src="twitter-symbol.jpg">
+    <img src="assets/twitter-symbol.jpg">
     `)
     .appendTo($(".image-container"));
     // Elon has a smaller profile, so adapt details and tweets sections 
@@ -269,7 +269,7 @@ if (index === 0) {
 } else if (index === 1) {
     // Bill does not have the twitter symbol next to his name
     $(`
-    <img src="twitter-symbol.jpg">
+    <img src="assets/twitter-symbol.jpg">
     `)
     .remove($(".image-container"));
      // Bill has a bigger profile, so adapt details and tweets sections
@@ -434,7 +434,7 @@ for (var i = 0; i < users[index].tweets.length; i++) {
             <div class="mini-profile-info">
                 <h3 class="mini-displayName">${users[index].displayName}</h3>
                 <div class="mini-image-container">
-                    <img src="twitter-verified.jpg">
+                    <img src="assets/twitter-verified.jpg">
                 </div>
                 <h4 class="mini-userName">${users[index].userName} • ${formattedTimestamps[i]}</h4>
             </div>
@@ -470,7 +470,7 @@ for (var i = 0; i < users[index].tweets.length; i++) {
 // Add twitter symbol next to Elon name for each tweet rendered above
 if (index === 0) {
     $(`
-    <img class="mini-twitter-symbol" src="twitter-symbol.jpg">
+    <img class="mini-twitter-symbol" src="assets/twitter-symbol.jpg">
     `)
     .appendTo('.mini-image-container');
 }
